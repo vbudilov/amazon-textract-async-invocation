@@ -37,8 +37,12 @@ name has been taken already so you might need to change it (the Exceptions are q
 2. Build the `cdk` project (go to the cdk folder and type ```bash mvn package && cdk synth```). Once you do that you'll see the following line:
 ```Supply a stack id (S3UploadsBucketStack, TextractJobNotificationsStack, S3DataLakeBucketStack, DDBStack) to display its template.```
 
-3. To deploy all of the resources that were just complied type ```cdk deploy *```, otherwise deploy each one of them 
+3. To deploy all of the resources that were just complied type ```cdk deploy \*```, otherwise deploy each one of them 
 independenlty by typing out their names ```e.g. cdk deploy "S3UploadsBucketStacK"```
+During the deployment you will be prompted multiple times to type in 'y' to proceed with the installation process so 
+you'll need to be watching the installation (most of the prompts are to confirm that you want to create the appropriate IAM 
+roles) 
+4. [Optional] If you want to delete everything (some resources will not be removed though) then type ```cdk destroy \*``` and follow the prompts
 
 Voila! Your infrastructure is provisioned! Now you're ready to compile and deploy your Lambda functions 
 
