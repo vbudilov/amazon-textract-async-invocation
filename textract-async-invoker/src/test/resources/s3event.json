@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2023-07-07T15:22:26.670Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "A27IPOX6Q1SP9D"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "104.434.143.204"
+      },
+      "responseElements": {
+        "x-amz-request-id": "S1NX433RMJMJCDVY",
+        "x-amz-id-2": "nMOjYnZJsEMtiFBqXbhYP+XhJYJafU30jj3LLgiXA12a/3B7yDCxj4Xzr7P32rvDIPop+5JFk5hi3hlfSFtB1K4OKTaqvV6+"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "MzMxYmY0MDctOGNiNi00NTA5LWIxOTctMTQxNWQ0MjVlZmIz",
+        "bucket": {
+          "name": "myuniquebucket.uploads",
+          "ownerIdentity": {
+            "principalId": "A27IPOX6Q1SP9D"
+          },
+          "arn": "arn:aws:s3:::myuniquebucket.uploads"
+        },
+        "object": {
+          "key": "userId=34a86f93-34343-4c63-1344-5611d28ff203/IMG_0186.jpeg",
+          "size": 2668845,
+          "eTag": "1544b450ebb47128a243fcfce9402969",
+          "sequencer": "0064A82DB29ECDA980"
+        }
+      }
+    }
+  ]
+}

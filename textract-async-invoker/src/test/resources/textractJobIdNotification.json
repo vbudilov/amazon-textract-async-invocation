@@ -1,0 +1,11 @@
+{
+  "Type": "Notification",
+  "MessageId": "44f283d6-9a40-5a71-86b6-dee65b0e160f",
+  "TopicArn": "arn:aws:sns:us-east-1:813979810869:textract-job-notifications",
+  "Message": "{\"JobId\":\"9b2c4758eaa542e4fd973a29c5f68a374d7f478dc29011a4127553ba6bdc29ce\",\"Status\":\"SUCCEEDED\",\"API\":\"StartExpenseAnalysis\",\"Timestamp\":1689698062596,\"DocumentLocation\":{\"S3ObjectName\":\"userId\\u003d34a86f93-2323-3333-3333-56XXXXXf203/IMG_0186.jpeg\",\"S3Bucket\":\"myuniquebucket.uploads\"}}",
+  "Timestamp": "2023-07-18T16:34:22.658Z",
+  "SignatureVersion": "1",
+  "Signature": "BOgzHJ08ZdHuIJrCIc8ej4s5voRTNENfc5wuPs5RU5y4/jy0P1ktRackuHNZz11oyIMwdTwUH43HR3ommVqInUwQtPUmsXJQifh3Qwa h86e9WWAx99G5CJE6A9f5MBhbxV2RCUjqPX07gASF fmAR4AsmXnOYrh213Se09hEetbSLFO7VHv63utj8YKrEDrwNL8KFq3SkjJArw4fPItKr54vbi3UBjfMDsw12iQwBXCgo8hPG1aH1fnozKxUIsqw6yZYq0a n8dBSsxhzFONddyrW4ngPYIJNLtpzEblsdUjujIdiCjiu2Ko2hJ7v4tLgc6lftleVtxdufG/yWWJg==",
+  "SigningCertURL": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-asdfasdfasdfasdf.pem",
+  "UnsubscribeURL": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:000000000:textract-job-notifications:5d889ba9-a759-4c9e-a5f3-6b574109427e"
+}

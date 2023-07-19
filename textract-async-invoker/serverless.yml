@@ -1,0 +1,64 @@
+service: textract-pipeline
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: us-east-1
+  stage: prd
+  runtime: java17
+
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "s3:ListBucket"
+            - "s3:PutObject"
+          Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+        - Effect: "Allow"
+          Action:
+            - "textract:StartExpenseAnalysis"
+            - "textract:StartExpenseTextDetection"
+            - "textract:GetExpenseTextDetection"
+            - "textract:GetExpenseAnalysis"
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - "dynamodb:DescribeTable"
+            - "dynamodb:Query"
+            - "dynamodb:Scan"
+            - "dynamodb:GetItem"
+            - "dynamodb:PutItem"
+            - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
+          Resource: arn:aws:dynamodb:us-east-1:${aws:accountId}:table/${ssm:ddbTable}
+        - Effect: "Allow"
+          Action:
+            - "s3:ListBucket"
+            - "s3:GetObject"
+          Resource: arn:aws:s3:::${ssm:uploadsBucketNotificationName}/*
+package:
+  artifact: build/libs/textract-async-invoker-1.0-SNAPSHOT-all.jar
+
+functions:
+  TextractAsyncInvoker:
+    handler: com.budilov.lambda.textract.invoker.TextractAsyncInvoker
+    events:
+      - sqs: ${ssm:uploadsBucketNotificationSQSARNQueue}
+    environment:
+      TEXTRACT_SNS_ARN: ${ssm:textractJobNotificationSNSArn}
+      TEXTRACT_IAM_ROLE_ARN: ${ssm:textractIAMRoleArn}
+      DYNAMO_DB_TABLE: ${ssm:ddbTable}
+
+  TextractJobIdHandler:
+    handler: com.budilov.lambda.textract.invoker.TextractJobIdHandler
+    events:
+      - sqs: ${ssm:textractJobNotificationSQSArn}
+
+    environment:
+      TEXTRACT_SNS_ARN: ${ssm:textractJobNotificationSNSArn}
+      TEXTRACT_IAM_ROLE_ARN: ${ssm:textractIAMRoleArn}
+      DYNAMO_DB_TABLE: ${ssm:ddbTable}
+
+
