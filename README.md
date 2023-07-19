@@ -21,7 +21,11 @@ I recommend you spend an hour or two experimenting with it since it'll save you 
 redeploying, testing, and fixing/debugging the provisioned infrastructure.
 
 ### textract-async-invoker (Lambda functions)
-TBD (I'm cleaning up the code before I can open-source it so stay tuned)
+There are 2 Lambda functions: 
+1. TextractAsyncInvoker
+2. TextractJobIdHandler
+
+The first one submits the Textract job and the second one receives the result of the job
 
 ## Deployment
 
@@ -47,6 +51,14 @@ roles)
 Voila! Your infrastructure is provisioned! Now you're ready to compile and deploy your Lambda functions 
 
 ### textract-async-invoker (Lambda functions)
-TBD (I'm cleaning up the code before I can open-source it so stay tuned)
+1. Change the account and region property value under textract-async-invoker/src/main/resources/application.properties
 
+Enter your correct account number --> aws.accountnumber=XXXXXXXXX
 
+2. Build the project
+
+```./gradlew fatJar```
+
+3. Deploy the Lambda functions
+
+```serverless deploy```
